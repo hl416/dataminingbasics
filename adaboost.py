@@ -5,7 +5,8 @@ sys.setdefaultencoding('utf8')
 
 ############################################################################################
 #Adaboost的每一个weak learn在train的时候，是直接用training dataset训练得到的model来在同样的dataset上predict，计算误差/损失（线性回归其实也是这样）。
-#alpha
+#alpha:每个weak learner的权重，重要的alpha更大。在最后得到的strong learner里面，可以考虑其不同weak learner的比重，也可以不考虑。在下面的代码中，两种情况均包含。
+#iter_num: 如果迭代次数过多，可能overfiting，如果过少，不能学到足够的Pattern，准确性不好。因此，可以观察随着迭代次数增加，准确性的变化，然后在适当的时候停止迭代。当然，也有研究工作设计了regularization来解决，但是貌似不常用。
 ############################################################################################
 
 from sklearn.datasets.samples_generator import *
@@ -75,7 +76,7 @@ if __name__ == "__main__":
 	Y_train = Y[:300]
 	Y_test = Y[300:]
 
-	for ite_num in [3,5,10,20,30,50,100,300,600,1000,2000,3000]:
+	for ite_num in [3,5,10,20,30,50,100,300,600,1000,2000,3000]: # we can compare the precision and designs the rule to stop: 1) the precision dreceases or 2) the precision descreases significantly (in case local optimal). It might be better to use cross-validation here.
 		clear_models()
 		print ite_num
 		adaboost(X_train,Y_train,ite_num)
