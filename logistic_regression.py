@@ -14,6 +14,7 @@ sys.setdefaultencoding('utf8')
 #整体最后的情况。因此，在logistic regression里面，cost function的定义加上了log，使得最后的cost function
 #为凸函数。cost(h(x),y) = -y log(h(x)) - (1-y) log(1-h(x)).
 #当然，还有别的cost function也能得到凸函数，但是我们选取的这个函数还有计算上的优势。
+#另一方面，如果使用最大似然估计来计算，正好推导出的似然函数就是这个cost function的相反数.
 #
 #形式上，logistic_regression只能解决空间上线性可分的问题，因为它其实就是从线性回归加了一个转化函数。为了
 #解决线性不可分的问题，比如二维空间里圆圈内部和外部分别对应两种类别，可以做特征变换，将地位的特征（对应
