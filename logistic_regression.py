@@ -8,6 +8,10 @@ sys.setdefaultencoding('utf8')
 #[0,1]这样一个空间。logistic_regression原则上还是解决线性可分的问题，如果点正好在分割平面上，则值为0；
 #否则分别大于或者小于0，则对应两个不同类，也就是0和1.
 #
+#将实数空间映射到[0,1]空间有无数个函数，为什么要使用sigmoid函数呢？一个解释是现实世界很多常见的分布都是
+#expoential family，包括高斯分布、等，expoential family的函数可以写成统一的形式：，然后如果假设Y是服从
+#伯努利分布的，那么可以推导出映射函数就是sigmoid函数。另一种解释是熵，可以看我保存的资料。
+#
 #迭代的目的是减少cost function，也就是所谓的Error。但是这个Error是我们自己定义的，可以有不同的定义。
 #1/m \sum(y-y')^2是一种比较经典的定义，在linear regression没有什么问题。但是在linear regresssion如果
 #也采用同样的定义，则最后的cost function将不会是一个凸函数，也就会使得很容易出现局部最优，但是不是
@@ -30,6 +34,7 @@ sys.setdefaultencoding('utf8')
 #
 #gamma参数的大小决定了regularization这部分的权重，影响着模型的overfiting或者underfiting。在实际中可能需要
 #进行尝试.
+#
 ############################################################################################
 
 from sklearn.datasets.samples_generator import *

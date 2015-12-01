@@ -8,6 +8,7 @@ sys.setdefaultencoding('utf8')
 #alpha:每个weak learner的权重，重要的alpha更大。在最后得到的strong learner里面，可以考虑其不同weak learner的比重，也可以不考虑。在下面的代码中，两种情况均包含。
 #iter_num: 如果迭代次数过多，可能overfiting，如果过少，不能学到足够的Pattern，准确性不好。因此，可以观察随着迭代次数增加，准确性的变化，然后在适当的时候停止迭代。当然，也有研究工作设计了regularization来解决，但是貌似不常用。
 #剪枝：一般应用貌似并不多；看到的方法包括去掉alpha最小的那些weak leaner，以及如果两个learner的结果很相似，则去掉其中一个。
+#在本例中，basic eatimator用的是decision stump，通过找一个最好的feature，使得对sample加权后的error最小。如果
 ############################################################################################
 
 from sklearn.datasets.samples_generator import *
