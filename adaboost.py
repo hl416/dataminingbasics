@@ -60,6 +60,7 @@ def adaboost(X_train,Y_train,num_ite):
 				best_preditions = Y_predict
 				best_model = M
 				alpha = 0.5 * math.log((1-e)/e) # the coefficient for the current weak leaner, if the learner did well, then alpha is larger; otherwise small
+		#由于是分类问题，错误的时候并不存在误差多，误差少之分。并不会说，对于误差大的样本，给更高的权重，误差小的点，给更小的权重。而是对于错误的样本，都同样比例地增加权重；对于正确的样本，同样比重地减小权重。
 		for i in range(0,num_samples): #update the weights for the training samples
 			if best_preditions[i] == Y_train[i]:
 				lst_weights[i] *= exp(-alpha)	#if the classification for one sample is correct, its weight decreases
